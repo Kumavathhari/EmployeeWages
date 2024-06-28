@@ -7,12 +7,10 @@ public class EmployeeWage {
         public static final int NUM_WORKING_DAYS = 20;
 
         public static final int MAX_HRS_IN_MONTH = 100;
-
-    static void EmployeeMonthDaysTillReached() {
-        int totalEmpHrs = 0;
-        int totalWorkingDays = 0;
-        int totalEmpWage = 0;
-
+        private static int totalEmpHrs = 0;
+        private static int totalWorkingDays = 0;
+        private static int totalEmpWage = 0;
+    static void RefactorCodeTOEmployeeClassMethod() {
         while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_WORKING_DAYS) {
             int empHrs = 0;
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
@@ -42,7 +40,9 @@ public class EmployeeWage {
 
 
 
+
     public static void main(String[] args) {
-        EmployeeMonthDaysTillReached();
+        EmployeeWage employeeWage = new EmployeeWage();
+        employeeWage.RefactorCodeTOEmployeeClassMethod();
     }
 }
