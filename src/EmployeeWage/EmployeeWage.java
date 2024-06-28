@@ -3,15 +3,12 @@ package EmployeeWage;
 public class EmployeeWage {
         public static final int IS_PART_TIME = 1;
         public static final int IS_FULL_TIME = 2;
-        public static final int EMP_RATE_PER_HOUR = 20;
-        public static final int NUM_WORKING_DAYS = 20;
+    public void MultipleCompany(String companyName, int empRatePerHour, int numWorkingDays, int maxHrsInMonth) {
+        int totalEmpHrs = 0;
+        int totalWorkingDays = 0;
+        int totalEmpWage = 0;
 
-        public static final int MAX_HRS_IN_MONTH = 100;
-        private static int totalEmpHrs = 0;
-        private static int totalWorkingDays = 0;
-        private static int totalEmpWage = 0;
-    static void RefactorCodeTOEmployeeClassMethod() {
-        while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_WORKING_DAYS) {
+        while (totalEmpHrs <= maxHrsInMonth && totalWorkingDays < numWorkingDays) {
             int empHrs = 0;
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 
@@ -29,20 +26,20 @@ public class EmployeeWage {
             totalEmpHrs += empHrs;
             totalWorkingDays++;
 
-            int empWage = empHrs * EMP_RATE_PER_HOUR;
+            int empWage = empHrs * empRatePerHour;
             totalEmpWage += empWage;
 
-            System.out.println("Day: " + totalWorkingDays + " Emp Hours: " + empHrs + " Emp Wage: " + empWage);
+            System.out.println("Company: " + companyName + " | Day: " + totalWorkingDays + " | Emp Hours: " + empHrs + " | Emp Wage: " + empWage);
         }
 
-        System.out.println("Total Emp Wage for " + totalWorkingDays + " days and " + totalEmpHrs + " hours: " + totalEmpWage);
+        System.out.println("Total Emp Wage for company: " + companyName + " is " + totalEmpWage);
     }
 
 
 
-
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         EmployeeWage employeeWage = new EmployeeWage();
-        employeeWage.RefactorCodeTOEmployeeClassMethod();
+        employeeWage.MultipleCompany("CompanyA", 20, 20, 100);
+        employeeWage.MultipleCompany("CompanyB", 30, 22, 120);
     }
 }
