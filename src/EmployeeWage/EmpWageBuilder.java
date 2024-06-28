@@ -1,13 +1,11 @@
 package EmployeeWage;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class EmpWageBuilder {
-        public static final int IS_PART_TIME = 1;
-        public static final int IS_FULL_TIME = 2;
-
-        private final List<CompanyEmpWage> companyEmpWageList;
+    public class EmpWageBuilder {
+        private ArrayList<CompanyEmpWage> companyEmpWageList;
 
         public EmpWageBuilder() {
             companyEmpWageList = new ArrayList<>();
@@ -20,13 +18,12 @@ public class EmpWageBuilder {
 
         public void computeEmployeeWage() {
             for (CompanyEmpWage companyEmpWage : companyEmpWageList) {
-                int totalEmpWage = computeEmployeeWageForCompany(companyEmpWage);
-                companyEmpWage.setTotalEmpWage(totalEmpWage);
+                companyEmpWage.setTotalEmpWage(this.computeEmployeeWage(companyEmpWage));
                 System.out.println(companyEmpWage);
             }
         }
 
-        private int computeEmployeeWageForCompany(CompanyEmpWage companyEmpWage) {
+        private int computeEmployeeWage(CompanyEmpWage companyEmpWage) {
             int totalEmpHrs = 0;
             int totalWorkingDays = 0;
 
@@ -35,10 +32,10 @@ public class EmpWageBuilder {
                 int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 
                 switch (empCheck) {
-                    case IS_FULL_TIME:
+                    case EmployeeWage.IS_FULL_TIME:
                         empHrs = 8;
                         break;
-                    case IS_PART_TIME:
+                    case EmployeeWage.IS_PART_TIME:
                         empHrs = 4;
                         break;
                     default:
