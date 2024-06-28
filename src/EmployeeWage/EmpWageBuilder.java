@@ -66,4 +66,7 @@ import java.util.Map;
             return companyEmpWage != null ? companyEmpWage.totalEmpWage : 0;
         }
 
+        public int getTotalWageByCompany(String companyName) {
+            return getTotalEmpWage(companyName);
+        }
     }

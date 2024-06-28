@@ -11,6 +11,7 @@ public class CompanyEmpWage {
     public int totalEmpWage;
     public List<Integer> dailyWages;
 
+
     public CompanyEmpWage(String companyName, int empRatePerHour, int numWorkingDays, int maxHrsInMonth) {
         this.companyName = companyName;
         this.empRatePerHour = empRatePerHour;

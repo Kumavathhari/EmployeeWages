@@ -12,7 +12,7 @@ public class EmployeeWage {
 
         empWageBuilder.computeEmployeeWage();
 
-        System.out.println("Total Wage for CompanyA: " + empWageBuilder.getTotalEmpWage("CompanyA"));
-        System.out.println("Total Wage for CompanyB: " + empWageBuilder.getTotalEmpWage("CompanyB"));
+        System.out.println("Total Wage for CompanyA: " + empWageBuilder.getTotalWageByCompany("CompanyA"));
+        System.out.println("Total Wage for CompanyB: " + empWageBuilder.getTotalWageByCompany("CompanyB"));
     }
 }
