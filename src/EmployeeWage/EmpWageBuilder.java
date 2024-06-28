@@ -51,6 +51,7 @@ import java.util.Map;
                 totalWorkingDays++;
 
                 int empWage = empHrs * companyEmpWage.empRatePerHour;
+                companyEmpWage.addDailyWage(empWage); // Store daily wage
                 companyEmpWage.totalEmpWage += empWage;
 
                 System.out.println("Company: " + companyEmpWage.companyName + " | Day: " + totalWorkingDays + " | Emp Hours: " + empHrs + " | Emp Wage: " + empWage);
@@ -64,4 +65,5 @@ import java.util.Map;
             CompanyEmpWage companyEmpWage = companyToEmpWageMap.get(companyName);
             return companyEmpWage != null ? companyEmpWage.totalEmpWage : 0;
         }
+
     }
