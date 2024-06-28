@@ -4,18 +4,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-    public class EmpWageBuilder {
+    public class EmpWageBuilder implements EmpWageBuilderInterface {
         private ArrayList<CompanyEmpWage> companyEmpWageList;
+        private Map<String, CompanyEmpWage> companyToEmpWageMap;
 
         public EmpWageBuilder() {
             companyEmpWageList = new ArrayList<>();
+            companyToEmpWageMap = new HashMap<>();
         }
 
+        @Override
         public void addCompanyEmpWage(String companyName, int empRatePerHour, int numWorkingDays, int maxHrsInMonth) {
             CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, empRatePerHour, numWorkingDays, maxHrsInMonth);
             companyEmpWageList.add(companyEmpWage);
+            companyToEmpWageMap.put(companyName, companyEmpWage);
         }
 
+        @Override
         public void computeEmployeeWage() {
             for (CompanyEmpWage companyEmpWage : companyEmpWageList) {
                 companyEmpWage.setTotalEmpWage(this.computeEmployeeWage(companyEmpWage));
@@ -52,5 +57,11 @@ import java.util.Map;
             }
 
             return companyEmpWage.totalEmpWage;
+        }
+
+        @Override
+        public int getTotalEmpWage(String companyName) {
+            CompanyEmpWage companyEmpWage = companyToEmpWageMap.get(companyName);
+            return companyEmpWage != null ? companyEmpWage.totalEmpWage : 0;
         }
     }
